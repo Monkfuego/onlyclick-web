@@ -27,11 +27,11 @@ function Login() {
       setLoading(false);
       return;
     }
-
+    
     try {
       const payload = { phoneNumber, password }; // Updated payload to use phoneNumber
 
-      const response = await axios.post('/api/auth/login', payload, {
+      const response = await axios.post('https://only-click-six.vercel.app/api/auth/login', payload, {
         headers: {
           'Content-Type': 'application/json',
         },

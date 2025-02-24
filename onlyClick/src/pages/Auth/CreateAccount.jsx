@@ -22,7 +22,7 @@ const CreateAccount = () => {
       role: 'user',
     };
     try {
-      const response = await axios.post('/api/auth/register', packet);
+      const response = await axios.post('https://only-click-six.vercel.app/api/auth/register', packet);
       if (response.data.statusCode === 200) {
         navigate('/auth/login');
       } else {

@@ -46,7 +46,7 @@ function ContractorProfile() {
   const fetchWorkers = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/taskmaster/getProfiles', {
+      const response = await axios.get('https://only-click-six.vercel.app/api/taskmaster/getProfiles', {
         params: {
           role: 'all',
           contractorId: user?.id,
@@ -89,7 +89,7 @@ function ContractorProfile() {
 
     try {
       setLoading(true);
-      const response = await axios.post('/api/taskmaster/createProfile', {
+      const response = await axios.post('https://only-click-six.vercel.app/api/taskmaster/createProfile', {
         name: workerName,
         phoneNumber: workerPhoneNumber,
         contractorId: '67b61b511bf7eb298ccec4b8', // Use dynamic contractorId from context
@@ -128,7 +128,7 @@ function ContractorProfile() {
 
     try {
       setLoading(true);
-      const response = await axios.post('/api/otp/send', {
+      const response = await axios.post('https://only-click-six.vercel.app/api/otp/send', {
         phoneNumber: secondaryPhone,
       });
 
@@ -155,7 +155,7 @@ function ContractorProfile() {
 
     try {
       setLoading(true);
-      const response = await axios.post('/api/otp/verify', {
+      const response = await axios.post('https://only-click-six.vercel.app/api/otp/verify', {
         phoneNumber: secondaryPhone,
         otp: otp,
       });

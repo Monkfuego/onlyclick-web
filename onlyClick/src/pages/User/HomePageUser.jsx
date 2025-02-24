@@ -3,7 +3,7 @@ import { IoFilterSharp } from 'react-icons/io5';
 import { CiSearch } from 'react-icons/ci';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaCircleUser } from 'react-icons/fa6';
-
+import cookie from "js-cookie"
 // Components
 import SlideableCards from '../../components/SlideableCards';
 import CategoryCards from '../../components/CategoryCards';
@@ -23,8 +23,8 @@ import { AuthContext } from '../../utils/context/Context';
 
 function HomePageUser() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
-
+  // const { user } = useContext(AuthContext);
+  const [user,setUser]=useState(cookie?.get('userProfile'))
   // State Management
   const [username, setUsername] = useState('User');
   const [address, setAddress] = useState('');
@@ -41,7 +41,7 @@ function HomePageUser() {
     categories: false,
     slides: false,
   });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
   // Fetch Data on Component Mount
   useEffect(() => {
@@ -55,6 +55,7 @@ function HomePageUser() {
     fetchData();
   }, [user]);
 
+  
   // Fetch Data Function
   const fetchData = async () => {
     try {
@@ -69,11 +70,11 @@ function HomePageUser() {
 
 
       // Update states
-      setPopularServices(servicesResponse.data || []);
-      setCategories(categoriesResponse.data || []);
-      setSlideableCards(slidesResponse.data || []);
+      // setPopularServices(servicesResponse.data || []);
+      // setCategories(categoriesResponse.data || []);
+      // setSlideableCards(slidesResponse.data || []);
     } catch (err) {
-      console.error('Error fetching data:', err);
+      console.log('Error fetching data:', err);
       setError('Failed to load data. Please try again.');
     } finally {
       // Reset loading states

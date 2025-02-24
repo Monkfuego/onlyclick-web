@@ -40,7 +40,7 @@ function SignUpContractor() {
     };
 
     try {
-      const response = await axios.post('/api/auth/register', packet);
+      const response = await axios.post('https://only-click-six.vercel.app/api/auth/register', packet);
       console.log(response);
     } catch (error) {
       console.error('There was an error registering the contractor!', error);
